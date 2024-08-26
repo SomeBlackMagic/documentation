@@ -50,3 +50,10 @@ service docker start
 echo "[$(date)] done"
 ```
 
+
+```
+docker kill $(docker ps -q)
+docker rm $(docker ps -a -q) -f
+docker rmi $(docker images -q) -f
+
+```
