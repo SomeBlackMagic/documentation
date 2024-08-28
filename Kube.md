@@ -17,5 +17,7 @@ microk8s stop
 microk8s start
 
 microk8s config > /root/.kube/config
-snap install kubectl --classic 
+snap install kubectl --classic
+snap install helm3
+
 ```
