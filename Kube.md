@@ -21,3 +21,10 @@ snap install kubectl --classic
 snap install helm3
 
 ```
+
+## Setup rancher on microk8s
+snap install microk8s --classic --channel=1.29.0
+microk8s status --wait-ready
+microk8s.enable dns
+microk8s enable rbac
+microk8s config > /root/.kube/config
