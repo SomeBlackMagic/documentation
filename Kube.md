@@ -23,8 +23,22 @@ snap install helm3
 ```
 
 ## Setup rancher on microk8s
+```
 snap install microk8s --classic --channel=1.29.0
 microk8s status --wait-ready
 microk8s.enable dns
 microk8s enable rbac
 microk8s config > /root/.kube/config
+```
+
+## Hetzner vps dns
+```
+      dhcp4-overrides:
+        use-dns: false
+      nameservers:
+        search: [company.com]
+        addresses:
+          - 8.8.8.8
+          - 8.8.4.4
+          - 1.1.1.1
+```
