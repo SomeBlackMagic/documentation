@@ -42,3 +42,6 @@ microk8s config > /root/.kube/config
           - 8.8.4.4
           - 1.1.1.1
 ```
+
+## Install rancher on microk8s
+https://nready.net/deploying-a-kubernetes-environment-with-microk8s-and-rancher/
