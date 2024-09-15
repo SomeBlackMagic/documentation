@@ -45,3 +45,31 @@ microk8s config > /root/.kube/config
 
 ## Install rancher on microk8s
 https://nready.net/deploying-a-kubernetes-environment-with-microk8s-and-rancher/
+
+
+## Graceful Node Shutdown
+Add to /etc/kubernetes/kubelet-config.yaml
+```
+featureGates:
+  GracefulNodeShutdown: true
+shutdownGracePeriod: 60s
+shutdownGracePeriodCriticalPods: 20s
+```
+Test time limit in 
+
+
+
+```
+systemd-inhibit --list
+busctl get-property org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager InhibitDelayMaxUSec
+
+grep -r "InhibitDelayMaxSec" /etc/systemd/ /usr/lib/systemd/
+
+sudo nano /usr/lib/systemd/logind.conf.d/unattended-upgrades-logind-maxdelay.conf
+
+InhibitDelayMaxSec=60
+
+sudo systemctl daemon-reload
+sudo systemctl restart systemd-logind
+
+```
